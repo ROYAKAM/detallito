@@ -16,14 +16,15 @@ function App() {
       <h1>Para mi amor hermoso</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          Te amo {count}
+          Contador de te amo {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Con mucho amor para ti fecha de inicio:         
         </p>
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      <p className="home-descripcion">
+         Proyecto iniciado el:<br></br> <strong> Martes 09 de Junio de 2026 09:50pm </strong>
       </p>
     </>
   )
