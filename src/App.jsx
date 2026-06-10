@@ -14,6 +14,7 @@ function App() {
         </a>
       </div>
       <h1>Para mi amor hermoso</h1>
+      <h2>Te amo muchisisisimo</h2>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           Contador de te amo {count}
@@ -21,7 +22,6 @@ function App() {
         <p>
           Con mucho amor para ti fecha de inicio:         
         </p>
-
       </div>
       <p className="home-descripcion">
          Proyecto iniciado el:<br></br> <strong> Martes 09 de Junio de 2026 09:50pm </strong>
