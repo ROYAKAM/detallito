@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-
+  dom';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,7 +16,10 @@ function App() {
         </a>
       </div>
       <h1>Para mi amor hermoso</h1>
-      <h2>Te amo muchisisisimo</h2>
+      <h2>Te amo muuchisisisimo</h2>
+      <switch>
+        <route exact path="/" component{home} />
+      </switch>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           Contador de te amo {count}
@@ -24,7 +29,7 @@ function App() {
         </p>
       </div>
       <p className="home-descripcion">
-         Proyecto iniciado el:<br></br> <strong> Martes 09 de Junio de 2026 09:50pm </strong>
+         Proyecto iniciado el:<br></br> <strong> Martes 09 de Junio de 2026 09:50pm <br></br>(Desde tu cama)</strong>
       </p>
     </>
   )

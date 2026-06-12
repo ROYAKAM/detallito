@@ -22,3 +22,13 @@
 - Dinamic animations
 - Live progress view
 - Summary with charts
+
+## App flow
+
+1. **The intro:** With the intro resources and the presentation of what is the project and the introduction to let know whats next
+    >[!check] This screen has the intro with counter the initial message and description only a button next to reveal second screen
+2. **The login:** This is how secrets can be secrets this login page can be unlocked by the person you been selected, he knows the secrets.
+    >[!check] This login is full featured password turn into • with reveal option, can get hints, has redirectional options and include details around login form 
+3. **Rewind:** Like google photos rewind this is a slideshow with background music showing very special momments of the life of couple
+    >[!check] The slideshow has pause when hold left touch to go backward and touch rigth to the next photo, has progress bar above and scroll up to see full details of the photo 
+4. **:**
