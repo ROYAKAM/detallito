@@ -10,7 +10,7 @@ export default function RewindPage() {
   const navigate = useNavigate()
   const [dialogueDone, setDialogueDone] = useState(false)
   const [current, setCurrent] = useState(0)
-  const [showDetails, setShowDetails] = useState(false)
+
   const imgRef = useRef(null)
   const autoRef = useRef(null)
   const isLast = current === photos.length - 1
@@ -104,18 +104,6 @@ export default function RewindPage() {
             </button>
           )}
         </div>
-
-        {/* Details panel */}
-        {showDetails && (
-          <div className="absolute inset-0 z-30 bg-farm-900/95 flex items-center justify-center p-8" onClick={(e) => { e.stopPropagation(); setShowDetails(false) }}>
-            <div className="text-center">
-              <img src={photo.src} alt="" className="max-h-[50vh] mx-auto mb-4 pixel-border" />
-              <p className="text-xl font-body text-sdvcream-100">{photo.caption}</p>
-              <p className="text-sdvcream-200/50 font-body mt-2">{photo.date}</p>
-              {photo.location && <p className="text-sdvcream-200/30 font-body mt-1">{photo.location}</p>}
-            </div>
-          </div>
-        )}
 
         {/* Tap hint */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 text-sdvcream-200/30 text-sm font-body">

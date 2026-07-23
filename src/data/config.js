@@ -1,4 +1,6 @@
 // ponytail: all config in one place, swap values before the big day
+export const CONFETTI_COLORS = ['#FFD921', '#4CAF50', '#A67C52', '#59C9F1']
+
 export default {
   nombre: 'Mi Amor',
   senderName: 'ROYAKAM',

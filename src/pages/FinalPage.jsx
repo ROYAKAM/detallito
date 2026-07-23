@@ -5,11 +5,9 @@ import PageTransition from '../components/PageTransition'
 import TypewriterText from '../components/TypewriterText'
 import EnvelopeReveal from '../components/EnvelopeReveal'
 import DialogueBox from '../components/DialogueBox'
-import config from '../data/config'
+import config, { CONFETTI_COLORS } from '../data/config'
 import { questions } from '../data/quiz'
 import { cards } from '../data/cards'
-
-const CONFETTI_COLORS = ['#FFD921', '#4CAF50', '#A67C52', '#59C9F1']
 
 // ponytail: replace this letter with the real one before the big day
 const LOVE_LETTER = `${config.nombre},

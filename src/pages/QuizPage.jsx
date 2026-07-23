@@ -7,9 +7,7 @@ import PageTransition from '../components/PageTransition'
 import DialogueBox from '../components/DialogueBox'
 import { questions } from '../data/quiz'
 import { cards } from '../data/cards'
-import config from '../data/config'
-
-const CONFETTI_COLORS = ['#FFD921', '#4CAF50', '#A67C52', '#59C9F1']
+import config, { CONFETTI_COLORS } from '../data/config'
 
 // ponytail: hearts for score display
 function Hearts({ filled, total }) {

@@ -4,9 +4,7 @@ import gsap from 'gsap'
 import confetti from 'canvas-confetti'
 import { useApp } from '../context/AppContext'
 import PageTransition from '../components/PageTransition'
-import config from '../data/config'
-
-const CONFETTI_COLORS = ['#FFD921', '#4CAF50', '#A67C52', '#59C9F1']
+import config, { CONFETTI_COLORS } from '../data/config'
 
 export default function LoginPage() {
   const navigate = useNavigate()

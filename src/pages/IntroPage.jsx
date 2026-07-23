@@ -4,9 +4,7 @@ import confetti from 'canvas-confetti'
 import { useApp } from '../context/AppContext'
 import TypewriterText from '../components/TypewriterText'
 import PageTransition from '../components/PageTransition'
-import config from '../data/config'
-
-const CONFETTI_COLORS = ['#FFD921', '#4CAF50', '#A67C52', '#59C9F1']
+import config, { CONFETTI_COLORS } from '../data/config'
 
 function Countdown({ target }) {
   const [diff, setDiff] = useState(getTimeDiff(target))
