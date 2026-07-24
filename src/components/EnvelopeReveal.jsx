@@ -61,7 +61,7 @@ export default function EnvelopeReveal({ onOpen }) {
       </div>
 
       {!opened && (
-        <p className="text-center text-sdvcream-200/50 font-body text-lg mt-4" style={{ animation: 'gentle-pulse 2s infinite' }}>
+        <p className="text-center text-sdvcream-200/70 font-body text-lg mt-4" style={{ animation: 'gentle-pulse 2s infinite' }}>
           Toca para abrir
         </p>
       )}

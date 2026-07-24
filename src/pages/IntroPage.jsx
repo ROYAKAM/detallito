@@ -98,7 +98,7 @@ export default function IntroPage() {
         </h1>
 
         {showMessage && (
-          <div className="max-w-md text-sdvcream-100/80 text-xl font-body leading-relaxed">
+          <div className="max-w-md text-sdvcream-100/90 text-xl font-body leading-relaxed">
             <TypewriterText
               text="Prepare algo muy especial para ti. Toca el boton cuando estes lista para comenzar esta aventura..."
               speed={35}
@@ -108,7 +108,7 @@ export default function IntroPage() {
 
         {!isBirthday && (
           <div className="mt-4">
-            <p className="text-sm text-sdvcream-200/50 mb-3 font-body">Cuenta regresiva para tu dia</p>
+            <p className="text-sm text-sdvcream-200/70 mb-3 font-body">Cuenta regresiva para tu dia</p>
             <Countdown target={config.fechaCumple} />
           </div>
         )}
@@ -128,7 +128,7 @@ export default function IntroPage() {
           Iniciar Aventura
         </button>
 
-        <p className="text-xs text-sdvcream-200/25 mt-8 font-body">
+        <p className="text-xs text-sdvcream-200/40 mt-8 font-body">
           Proyecto iniciado el {config.fechaInicio}
         </p>
       </div>

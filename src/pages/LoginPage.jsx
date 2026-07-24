@@ -44,7 +44,7 @@ export default function LoginPage() {
           <div className="text-center mb-8">
             <div className="text-5xl mb-4">🗝️</div>
             <h2 className="text-sm font-pixel text-sdvgold-500 leading-relaxed">Ingresa el codigo secreto</h2>
-            <p className="text-lg text-sdvcream-200/50 mt-2 font-body">Solo tu sabes la respuesta...</p>
+            <p className="text-lg text-sdvcream-200/70 mt-2 font-body">Solo tu sabes la respuesta...</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -54,13 +54,13 @@ export default function LoginPage() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="Tu secreto..."
-                className={`w-full bg-farm-900 border-2 ${error ? 'border-red-500' : 'border-sdvbrown-700'} px-4 py-3 pr-16 text-sdvcream-100 placeholder-sdvcream-200/30 focus:outline-none focus:border-sdvgold-500 transition-colors font-body text-xl`}
+                className={`w-full bg-farm-900 border-2 ${error ? 'border-red-500' : 'border-sdvbrown-700'} px-4 py-3 pr-16 text-sdvcream-100 placeholder-sdvcream-200/40 focus:outline-none focus:border-sdvgold-500 transition-colors font-body text-xl`}
                 autoFocus
               />
               <button
                 type="button"
                 onClick={() => setShowPw(!showPw)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-sdvcream-200/50 hover:text-sdvgold-500 font-body text-lg transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-sdvcream-200/70 hover:text-sdvgold-500 font-body text-lg transition-colors"
               >
                 {showPw ? 'Ocultar' : 'Ver'}
               </button>
@@ -77,14 +77,14 @@ export default function LoginPage() {
 
           <button
             onClick={() => { sfx.hint(); setHintIdx(i => (i + 1) % config.hints.length) }}
-            className="w-full mt-4 text-sdvcream-200/50 hover:text-sdvgold-400 font-body text-lg transition-colors"
+            className="w-full mt-4 text-sdvcream-200/70 hover:text-sdvgold-400 font-body text-lg transition-colors"
           >
             {hintIdx >= 0 ? 'Otra pista' : 'Necesito una pista'}
           </button>
 
           {hintIdx >= 0 && (
             <div className="mt-3 pixel-border bg-farm-700 p-3">
-              <p className="text-center text-sdvcream-100/80 font-body text-lg italic">
+              <p className="text-center text-sdvcream-100/90 font-body text-lg italic">
                 {config.hints[hintIdx]}
               </p>
             </div>

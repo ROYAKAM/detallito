@@ -90,11 +90,11 @@ export default function FinalPage() {
                   <div className="flex justify-center gap-4 sm:gap-6">
                     <div className="pixel-border bg-farm-800 px-5 py-3" style={{ animation: 'pop-in 0.4s ease-out' }}>
                       <p className="text-2xl font-bold text-sdvgold-500 font-body">{quizScore}/{questions.length}</p>
-                      <p className="text-xs text-sdvcream-200/50 font-body">Quiz score</p>
+                      <p className="text-xs text-sdvcream-200/70 font-body">Quiz score</p>
                     </div>
                     <div className="pixel-border bg-farm-800 px-5 py-3" style={{ animation: 'pop-in 0.4s ease-out 0.2s both' }}>
                       <p className="text-2xl font-bold text-sdvgold-500 font-body">{unlockedCards.length}/{cards.length}</p>
-                      <p className="text-xs text-sdvcream-200/50 font-body">Items</p>
+                      <p className="text-xs text-sdvcream-200/70 font-body">Items</p>
                     </div>
                   </div>
                 )}
