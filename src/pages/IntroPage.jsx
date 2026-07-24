@@ -19,16 +19,16 @@ function Countdown({ target }) {
   if (diff.passed) return null
 
   return (
-    <div className="flex gap-3 justify-center text-center">
+    <div className="flex gap-2 sm:gap-3 justify-center text-center">
       {[
         ['dias', diff.days],
         ['hrs', diff.hours],
         ['min', diff.minutes],
         ['seg', diff.seconds],
       ].map(([label, val]) => (
-        <div key={label} className="pixel-border bg-farm-800 px-3 py-2 min-w-[65px]">
-          <div className="text-2xl sm:text-3xl font-bold text-sdvgold-500 font-body">{String(val).padStart(2, '0')}</div>
-          <div className="text-xs text-sdvcream-200/60 uppercase tracking-wider font-body">{label}</div>
+        <div key={label} className="pixel-border bg-farm-800 px-2 sm:px-3 py-2 min-w-[55px] sm:min-w-[65px]">
+          <div className="text-xl sm:text-3xl font-bold text-sdvgold-500 font-body">{String(val).padStart(2, '0')}</div>
+          <div className="text-[10px] sm:text-xs text-sdvcream-200/60 uppercase tracking-wider font-body">{label}</div>
         </div>
       ))}
     </div>
@@ -82,7 +82,7 @@ export default function IntroPage() {
 
   return (
     <PageTransition>
-      <div ref={containerRef} className="min-h-screen flex flex-col items-center justify-center px-6 py-12 text-center gap-8">
+      <div ref={containerRef} className="min-h-dvh flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12 text-center gap-6 sm:gap-8">
         {isBirthday && (
           <div className="text-2xl sm:text-3xl font-pixel text-sdvgold-500 animate-bounce">
             Feliz Cumple!

@@ -12,7 +12,7 @@ body {
   font-family: 'VT323', monospace;
   background-color: #2d2a1e;
   color: #FFF8E7;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   image-rendering: auto;
 }

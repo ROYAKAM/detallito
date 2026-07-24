@@ -42,6 +42,9 @@ export default {
           400: '#BA68C8',
         },
       },
+      minHeight: {
+        dvh: '100dvh',
+      },
       fontFamily: {
         pixel: ['"Press Start 2P"', 'cursive'],
         body: ['"VT323"', 'monospace'],

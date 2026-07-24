@@ -50,7 +50,7 @@ export default function FinalPage() {
   if (!dialogueDone) {
     return (
       <PageTransition>
-        <div className="min-h-screen flex items-center justify-center px-6">
+        <div className="min-h-dvh flex items-center justify-center px-6">
           <DialogueBox lines={config.dialogues.final} speaker={config.senderName} onComplete={() => setDialogueDone(true)} />
         </div>
       </PageTransition>
@@ -59,7 +59,7 @@ export default function FinalPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center">
+      <div className="min-h-dvh flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-16 text-center">
         {!showLetter ? (
           <div className="space-y-8">
             <h2 className="text-sm font-pixel text-sdvgold-500">
@@ -74,7 +74,7 @@ export default function FinalPage() {
         ) : (
           <div className="max-w-lg w-full space-y-10">
             {/* Letter */}
-            <div className="pixel-border bg-sdvcream-100 p-6 sm:p-8 text-left max-h-[60vh] overflow-y-auto" style={{ boxShadow: 'inset 0 0 20px rgba(107, 55, 16, 0.1)' }}>
+            <div className="pixel-border bg-sdvcream-100 p-4 sm:p-8 text-left max-h-[60dvh] overflow-y-auto" style={{ boxShadow: 'inset 0 0 20px rgba(107, 55, 16, 0.1)' }}>
               <div className="text-farm-900/80 leading-relaxed whitespace-pre-line font-body text-xl">
                 <TypewriterText
                   text={LOVE_LETTER}
@@ -87,7 +87,7 @@ export default function FinalPage() {
             {letterDone && (
               <div className="space-y-6">
                 {quizScore !== null && (
-                  <div className="flex justify-center gap-6">
+                  <div className="flex justify-center gap-4 sm:gap-6">
                     <div className="pixel-border bg-farm-800 px-5 py-3" style={{ animation: 'pop-in 0.4s ease-out' }}>
                       <p className="text-2xl font-bold text-sdvgold-500 font-body">{quizScore}/{questions.length}</p>
                       <p className="text-xs text-sdvcream-200/50 font-body">Quiz score</p>

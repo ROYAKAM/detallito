@@ -51,7 +51,7 @@ export default function CardsPage() {
   if (!dialogueDone) {
     return (
       <PageTransition>
-        <div className="min-h-screen flex items-center justify-center px-6">
+        <div className="min-h-dvh flex items-center justify-center px-6">
           <DialogueBox lines={config.dialogues.cards} speaker={config.senderName} onComplete={() => setDialogueDone(true)} />
         </div>
       </PageTransition>
@@ -60,7 +60,7 @@ export default function CardsPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen px-4 py-12 sm:px-8">
+      <div className="min-h-dvh px-4 py-8 sm:py-12 sm:px-8">
         <div className="text-center mb-8">
           <h2 className="text-sm sm:text-base font-pixel text-sdvgold-500">Inventario</h2>
           <p className="text-sdvcream-200/50 mt-2 font-body text-xl">{unlockedCount} de {cards.length} items encontrados</p>

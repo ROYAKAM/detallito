@@ -3,7 +3,7 @@ import MusicPlayer from './MusicPlayer'
 
 export default function Layout({ children }) {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-dvh">
       <FloatingHearts />
       <main className="relative z-10">
         {children}

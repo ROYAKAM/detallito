@@ -61,7 +61,7 @@ export default function RewindPage() {
   if (!dialogueDone) {
     return (
       <PageTransition>
-        <div className="min-h-screen flex items-center justify-center px-6">
+        <div className="min-h-dvh flex items-center justify-center px-6">
           <DialogueBox lines={config.dialogues.rewind} speaker={config.senderName} onComplete={() => setDialogueDone(true)} />
         </div>
       </PageTransition>
@@ -99,7 +99,7 @@ export default function RewindPage() {
         </div>
 
         {/* Caption overlay */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-farm-900/90 to-transparent p-6 pt-20">
+        <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-farm-900/90 to-transparent p-4 sm:p-6 pt-12 sm:pt-20">
           <p className="text-sdvcream-100 text-xl font-body">{photo.caption}</p>
           <p className="text-sdvcream-200/50 text-lg font-body mt-1">{photo.date}{photo.location ? ` - ${photo.location}` : ''}</p>
 

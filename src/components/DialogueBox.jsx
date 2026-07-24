@@ -94,16 +94,16 @@ export default function DialogueBox({ lines, speaker = 'ROYAKAM', onComplete, sp
       </div>
 
       {/* Dialogue box */}
-      <div className="sdv-dialogue-box p-4 cursor-pointer select-none" onClick={handleClick}>
-        <div className="flex gap-4 items-start">
+      <div className="sdv-dialogue-box p-3 sm:p-4 cursor-pointer select-none" onClick={handleClick}>
+        <div className="flex gap-3 sm:gap-4 items-start">
           {/* Portrait */}
-          <div className="flex-shrink-0 pixel-border bg-farm-800 p-1">
+          <div className="flex-shrink-0 pixel-border bg-farm-800 p-1 hidden sm:block">
             <PixelPortrait />
           </div>
 
           {/* Text area */}
-          <div className="flex-1 min-h-[60px] flex flex-col justify-between">
-            <p className="font-body text-xl text-farm-900 leading-relaxed">
+          <div className="flex-1 min-h-[50px] sm:min-h-[60px] flex flex-col justify-between">
+            <p className="font-body text-lg sm:text-xl text-farm-900 leading-relaxed">
               {line.slice(0, charCount)}
               {!isRevealed && (
                 <span

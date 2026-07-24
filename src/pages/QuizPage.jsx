@@ -89,7 +89,7 @@ export default function QuizPage() {
   if (!dialogueDone) {
     return (
       <PageTransition>
-        <div className="min-h-screen flex items-center justify-center px-6">
+        <div className="min-h-dvh flex items-center justify-center px-6">
           <DialogueBox lines={config.dialogues.quiz} speaker={config.senderName} onComplete={() => setDialogueDone(true)} />
         </div>
       </PageTransition>
@@ -100,7 +100,7 @@ export default function QuizPage() {
     const finalScore = quizScore ?? score
     return (
       <PageTransition>
-        <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center gap-6">
+        <div className="min-h-dvh flex flex-col items-center justify-center px-6 text-center gap-6">
           <div className="text-6xl mb-2" style={{ animation: 'pop-in 0.5s ease-out' }}>
             {finalScore >= questions.length * 0.7 ? '⭐' : '💜'}
           </div>
@@ -131,7 +131,7 @@ export default function QuizPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
+      <div className="min-h-dvh flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12">
         {/* Progress */}
         <div className="w-full max-w-md mb-8">
           <div className="flex justify-between text-lg text-sdvcream-200/50 mb-2 font-body">

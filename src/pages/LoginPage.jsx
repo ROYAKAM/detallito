@@ -39,8 +39,8 @@ export default function LoginPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen flex items-center justify-center px-6">
-        <div ref={cardRef} className="w-full max-w-sm pixel-border bg-farm-800 p-8">
+      <div className="min-h-dvh flex items-center justify-center px-4 sm:px-6">
+        <div ref={cardRef} className="w-full max-w-sm pixel-border bg-farm-800 p-5 sm:p-8">
           <div className="text-center mb-8">
             <div className="text-5xl mb-4">🗝️</div>
             <h2 className="text-sm font-pixel text-sdvgold-500 leading-relaxed">Ingresa el codigo secreto</h2>
