@@ -5,7 +5,9 @@
       "Bash(for f:*)",
       "Bash(do sed:*)",
       "Bash(done)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(grep -c \"FFE44D\\\\|FFF8E7\\\\|FFD921\" dist/assets/index-*.css)",
+      "Bash(grep \"sdvgold\\\\|sdvcream\\\\|sdvbrown\\\\|farm-\" dist/assets/index-*.css)"
     ]
   }
 }

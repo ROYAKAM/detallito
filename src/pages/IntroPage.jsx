@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import gsap from 'gsap'
 import confetti from 'canvas-confetti'
 import { useApp } from '../context/AppContext'
 import TypewriterText from '../components/TypewriterText'
@@ -52,14 +51,6 @@ export default function IntroPage() {
   const { teAmoCount, setTeAmoCount } = useApp()
   const [showMessage, setShowMessage] = useState(false)
   const [isBirthday, setIsBirthday] = useState(false)
-  const containerRef = useRef(null)
-
-  // Stagger entrance for child elements
-  useEffect(() => {
-    if (containerRef.current) {
-      gsap.from(containerRef.current.children, { y: 20, opacity: 0, stagger: 0.15, duration: 0.5, ease: 'power2.out', delay: 0.5 })
-    }
-  }, [])
 
   useEffect(() => {
     const now = new Date()
@@ -82,7 +73,7 @@ export default function IntroPage() {
 
   return (
     <PageTransition>
-      <div ref={containerRef} className="min-h-dvh flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12 text-center gap-6 sm:gap-8">
+      <div className="min-h-dvh flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12 text-center gap-6 sm:gap-8">
         {isBirthday && (
           <div className="text-2xl sm:text-3xl font-pixel text-sdvgold-500 animate-bounce">
             Feliz Cumple!

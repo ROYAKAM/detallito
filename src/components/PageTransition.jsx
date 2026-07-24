@@ -1,16 +1,14 @@
 import { useRef, useEffect } from 'react'
-import gsap from 'gsap'
 import sfx from '../sfx'
 
-// ponytail: simple fade-in, no overlay. The overlay approach kept causing
-// brown screen issues on mobile/StrictMode. Content fade is enough.
+// ponytail: no GSAP opacity animation — StrictMode kills it.
+// CSS handles the fade, GSAP was the root cause of invisible text.
 export default function PageTransition({ children }) {
-  const ref = useRef(null)
+  const played = useRef(false)
 
   useEffect(() => {
-    sfx.transition()
-    gsap.from(ref.current, { opacity: 0, y: 12, duration: 0.45, ease: 'power2.out' })
+    if (!played.current) { sfx.transition(); played.current = true }
   }, [])
 
-  return <div ref={ref}>{children}</div>
+  return <div style={{ animation: 'sdv-content-in 0.4s ease-out' }}>{children}</div>
 }
