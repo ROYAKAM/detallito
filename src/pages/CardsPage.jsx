@@ -63,7 +63,7 @@ export default function CardsPage() {
       <div className="min-h-dvh px-4 py-8 sm:py-12 sm:px-8">
         <div className="text-center mb-8">
           <h2 className="text-sm sm:text-base font-pixel text-sdvgold-500">Inventario</h2>
-          <p className="text-sdvcream-200/70 mt-2 font-body text-xl">{unlockedCount} de {cards.length} items encontrados</p>
+          <p className="text-sdvcream-200 mt-2 font-body text-xl">{unlockedCount} de {cards.length} items encontrados</p>
           {quizScore === null && (
             <button
               onClick={() => { sfx.click(); navigate('/quiz') }}
@@ -92,7 +92,7 @@ export default function CardsPage() {
                     style={{ backfaceVisibility: 'hidden', animation: unlocked ? RARITY_GLOW[card.rarity] : 'none' }}
                   >
                     <span className="text-4xl inline-block" style={unlocked ? { animation: `item-bob 2s ease-in-out infinite`, animationDelay: `${card.id * 0.3}s` } : {}}>{unlocked ? card.emoji : '❓'}</span>
-                    <p className="text-xs font-body text-sdvcream-100/85 px-2 text-center">
+                    <p className="text-xs font-body text-sdvcream-100 px-2 text-center">
                       {unlocked ? card.itemName : 'Bloqueado'}
                     </p>
                   </div>

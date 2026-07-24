@@ -28,7 +28,7 @@ function Countdown({ target }) {
       ].map(([label, val]) => (
         <div key={label} className="pixel-border bg-farm-800 px-2 sm:px-3 py-2 min-w-[55px] sm:min-w-[65px]">
           <div className="text-xl sm:text-3xl font-bold text-sdvgold-500 font-body">{String(val).padStart(2, '0')}</div>
-          <div className="text-[10px] sm:text-xs text-sdvcream-200/60 uppercase tracking-wider font-body">{label}</div>
+          <div className="text-[10px] sm:text-xs text-sdvcream-200/80 uppercase tracking-wider font-body">{label}</div>
         </div>
       ))}
     </div>
@@ -98,7 +98,7 @@ export default function IntroPage() {
         </h1>
 
         {showMessage && (
-          <div className="max-w-md text-sdvcream-100/90 text-xl font-body leading-relaxed">
+          <div className="max-w-md text-sdvcream-100 text-xl font-body leading-relaxed">
             <TypewriterText
               text="Prepare algo muy especial para ti. Toca el boton cuando estes lista para comenzar esta aventura..."
               speed={35}
@@ -108,7 +108,7 @@ export default function IntroPage() {
 
         {!isBirthday && (
           <div className="mt-4">
-            <p className="text-sm text-sdvcream-200/70 mb-3 font-body">Cuenta regresiva para tu dia</p>
+            <p className="text-sm text-sdvcream-200 mb-3 font-body">Cuenta regresiva para tu dia</p>
             <Countdown target={config.fechaCumple} />
           </div>
         )}
@@ -128,7 +128,7 @@ export default function IntroPage() {
           Iniciar Aventura
         </button>
 
-        <p className="text-xs text-sdvcream-200/40 mt-8 font-body">
+        <p className="text-xs text-sdvcream-200/60 mt-8 font-body">
           Proyecto iniciado el {config.fechaInicio}
         </p>
       </div>

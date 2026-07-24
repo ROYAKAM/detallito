@@ -107,11 +107,11 @@ export default function QuizPage() {
           <h2 className="text-sm font-pixel text-sdvgold-500">Quiz completado!</h2>
           <div className="pixel-border bg-farm-800 p-6">
             <Hearts filled={finalScore} total={questions.length} animate />
-            <p className="text-sdvcream-200/70 mt-2 font-body text-lg">
+            <p className="text-sdvcream-200 mt-2 font-body text-lg">
               {finalScore} de {questions.length} correctas
             </p>
           </div>
-          <p className="text-sdvcream-100/85 max-w-sm font-body text-xl">
+          <p className="text-sdvcream-100 max-w-sm font-body text-xl">
             {finalScore >= questions.length * 0.7
               ? 'Me conoces muy bien! Desbloqueaste items secretos.'
               : 'Cada respuesta es un recuerdo nuestro.'}
@@ -134,7 +134,7 @@ export default function QuizPage() {
       <div className="min-h-dvh flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12">
         {/* Progress */}
         <div className="w-full max-w-md mb-8">
-          <div className="flex justify-between text-lg text-sdvcream-200/70 mb-2 font-body">
+          <div className="flex justify-between text-lg text-sdvcream-200 mb-2 font-body">
             <span>Pregunta {qIdx + 1} de {questions.length}</span>
             <span><Hearts filled={score} total={questions.length} /></span>
           </div>
@@ -178,7 +178,7 @@ export default function QuizPage() {
         {/* Feedback */}
         {showFeedback && (
           <div className="mt-6 pixel-border bg-farm-700 p-3 max-w-md">
-            <p className="text-sdvcream-100/90 text-center font-body text-lg italic">
+            <p className="text-sdvcream-100 text-center font-body text-lg italic">
               {q.explanation}
             </p>
           </div>

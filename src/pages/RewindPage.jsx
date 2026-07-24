@@ -94,14 +94,14 @@ export default function RewindPage() {
             src={photo.src}
             alt={photo.caption}
             className="w-full h-full object-cover"
-            onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.classList.add('flex', 'items-center', 'justify-center'); e.target.parentElement.innerHTML = '<span class="text-4xl">📷</span><p class="text-sdvcream-200/70 font-body mt-2">Foto no disponible</p>' }}
+            onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.classList.add('flex', 'items-center', 'justify-center'); e.target.parentElement.innerHTML = '<span class="text-4xl">📷</span><p class="text-sdvcream-200 font-body mt-2">Foto no disponible</p>' }}
           />
         </div>
 
         {/* Caption overlay */}
         <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-farm-900/90 to-transparent p-4 sm:p-6 pt-12 sm:pt-20">
           <p className="text-sdvcream-100 text-xl font-body">{photo.caption}</p>
-          <p className="text-sdvcream-200/70 text-lg font-body mt-1">{photo.date}{photo.location ? ` - ${photo.location}` : ''}</p>
+          <p className="text-sdvcream-200 text-lg font-body mt-1">{photo.date}{photo.location ? ` - ${photo.location}` : ''}</p>
 
           {isLast && (
             <button
@@ -114,7 +114,7 @@ export default function RewindPage() {
         </div>
 
         {/* Tap hint */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 text-sdvcream-200/70 text-sm font-body">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 text-sdvcream-200 text-sm font-body">
           {current === 0 ? 'Toca para avanzar' : `${current + 1} / ${photos.length}`}
         </div>
       </div>
