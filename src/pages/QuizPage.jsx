@@ -8,12 +8,21 @@ import DialogueBox from '../components/DialogueBox'
 import { questions } from '../data/quiz'
 import { cards } from '../data/cards'
 import config, { CONFETTI_COLORS } from '../data/config'
+import sfx from '../sfx'
 
-// ponytail: hearts for score display
-function Hearts({ filled, total }) {
+// ponytail: hearts for score display, with stagger pop-in
+function Hearts({ filled, total, animate = false }) {
   return (
     <span className="text-lg">
-      {Array.from({ length: total }, (_, i) => i < filled ? '❤️' : '🤍').join('')}
+      {Array.from({ length: total }, (_, i) => (
+        <span
+          key={i}
+          className="inline-block"
+          style={animate ? { animation: 'pop-in 0.3s ease-out both', animationDelay: `${i * 0.1}s` } : {}}
+        >
+          {i < filled ? '❤️' : '🤍'}
+        </span>
+      ))}
     </span>
   )
 }
@@ -41,8 +50,15 @@ export default function QuizPage() {
     setShowFeedback(true)
     const correct = idx === q.correctIndex
     if (correct) {
+      sfx.correct()
       setScore(s => s + 1)
       confetti({ particleCount: 30, spread: 50, origin: { y: 0.7 }, colors: CONFETTI_COLORS })
+      const el = optionsRef.current?.children[idx]
+      if (el) el.style.animation = 'correct-pulse 0.4s ease-out'
+    } else {
+      sfx.wrong()
+      const el = optionsRef.current?.children[idx]
+      if (el) el.style.animation = 'shake 0.4s'
     }
 
     setTimeout(() => {
@@ -65,6 +81,7 @@ export default function QuizPage() {
     setUnlockedCards(unlocked)
     setDone(true)
     if (finalScore >= questions.length * 0.7) {
+      sfx.celebration()
       confetti({ particleCount: 150, spread: 100, origin: { y: 0.5 }, colors: CONFETTI_COLORS })
     }
   }
@@ -84,12 +101,12 @@ export default function QuizPage() {
     return (
       <PageTransition>
         <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center gap-6">
-          <div className="text-6xl mb-2">
+          <div className="text-6xl mb-2" style={{ animation: 'pop-in 0.5s ease-out' }}>
             {finalScore >= questions.length * 0.7 ? '⭐' : '💜'}
           </div>
           <h2 className="text-sm font-pixel text-sdvgold-500">Quiz completado!</h2>
           <div className="pixel-border bg-farm-800 p-6">
-            <Hearts filled={finalScore} total={questions.length} />
+            <Hearts filled={finalScore} total={questions.length} animate />
             <p className="text-sdvcream-200/50 mt-2 font-body text-lg">
               {finalScore} de {questions.length} correctas
             </p>
@@ -100,10 +117,10 @@ export default function QuizPage() {
               : 'Cada respuesta es un recuerdo nuestro.'}
           </p>
           <div className="flex gap-4">
-            <button onClick={() => navigate('/cartas')} className="sdv-button">
+            <button onClick={() => { sfx.click(); navigate('/cartas') }} className="sdv-button">
               Ver inventario
             </button>
-            <button onClick={() => navigate('/final')} className="sdv-button">
+            <button onClick={() => { sfx.click(); navigate('/final') }} className="sdv-button">
               Mensaje final
             </button>
           </div>
@@ -132,7 +149,7 @@ export default function QuizPage() {
         </div>
 
         {/* Question */}
-        <h2 className="text-[11px] sm:text-sm font-pixel text-sdvgold-400 text-center mb-8 max-w-md leading-relaxed">
+        <h2 className="text-xs sm:text-sm font-pixel text-sdvgold-400 text-center mb-8 max-w-md leading-relaxed">
           {q.question}
         </h2>
 

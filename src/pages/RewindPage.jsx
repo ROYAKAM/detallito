@@ -5,6 +5,7 @@ import PageTransition from '../components/PageTransition'
 import DialogueBox from '../components/DialogueBox'
 import { photos } from '../data/photos'
 import config from '../data/config'
+import sfx from '../sfx'
 
 export default function RewindPage() {
   const navigate = useNavigate()
@@ -41,6 +42,7 @@ export default function RewindPage() {
 
   function handleClick(e) {
     clearTimeout(autoRef.current)
+    sfx.click()
     const x = e.clientX ?? e.touches?.[0]?.clientX
     if (x < window.innerWidth / 2) goTo(current - 1)
     else goTo(current + 1)
@@ -87,7 +89,13 @@ export default function RewindPage() {
 
         {/* Photo */}
         <div className="absolute inset-0 overflow-hidden">
-          <img ref={imgRef} src={photo.src} alt={photo.caption} className="w-full h-full object-cover" />
+          <img
+            ref={imgRef}
+            src={photo.src}
+            alt={photo.caption}
+            className="w-full h-full object-cover"
+            onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.classList.add('flex', 'items-center', 'justify-center'); e.target.parentElement.innerHTML = '<span class="text-4xl">📷</span><p class="text-sdvcream-200/50 font-body mt-2">Foto no disponible</p>' }}
+          />
         </div>
 
         {/* Caption overlay */}
@@ -97,7 +105,7 @@ export default function RewindPage() {
 
           {isLast && (
             <button
-              onClick={(e) => { e.stopPropagation(); navigate('/cartas') }}
+              onClick={(e) => { e.stopPropagation(); sfx.click(); navigate('/cartas') }}
               className="sdv-button mt-4"
             >
               Continuar

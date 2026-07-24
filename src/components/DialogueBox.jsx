@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import sfx from '../sfx'
 
 // ponytail: pixel art character portrait as inline SVG
 function PixelPortrait() {
@@ -45,8 +46,11 @@ export default function DialogueBox({ lines, speaker = 'ROYAKAM', onComplete, sp
   // Typing effect
   useEffect(() => {
     setCharCount(0)
+    let tickCount = 0
     timerRef.current = setInterval(() => {
       setCharCount(c => c + 1)
+      // ponytail: tick sound every 3rd char, not every char
+      if (++tickCount % 3 === 0) sfx.dialogueTick()
     }, speed)
     return () => clearInterval(timerRef.current)
   }, [lineIdx, speed])
@@ -56,14 +60,28 @@ export default function DialogueBox({ lines, speaker = 'ROYAKAM', onComplete, sp
     if (isRevealed) clearInterval(timerRef.current)
   }, [isRevealed])
 
+  // ponytail: 300ms cooldown so rapid taps don't skip dialogue unread
+  const canAdvance = useRef(false)
+  useEffect(() => {
+    if (isRevealed) {
+      canAdvance.current = false
+      const t = setTimeout(() => { canAdvance.current = true }, 300)
+      return () => clearTimeout(t)
+    }
+  }, [isRevealed])
+
   function handleClick() {
     if (!isRevealed) {
-      // Skip to end of line
       clearInterval(timerRef.current)
       setCharCount(line.length)
+      sfx.click()
+    } else if (!canAdvance.current) {
+      return
     } else if (isLast) {
+      sfx.dialogueAdvance()
       onComplete?.()
     } else {
+      sfx.dialogueAdvance()
       setLineIdx(i => i + 1)
     }
   }

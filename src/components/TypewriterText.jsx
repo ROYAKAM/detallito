@@ -1,16 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function TypewriterText({ text, speed = 50, onComplete, className = '' }) {
   const [index, setIndex] = useState(0)
+  // ponytail: ref stabilizes callback so parent re-renders don't restart the effect
+  const onCompleteRef = useRef(onComplete)
+  onCompleteRef.current = onComplete
 
   useEffect(() => {
     if (index >= text.length) {
-      onComplete?.()
+      onCompleteRef.current?.()
       return
     }
     const timer = setTimeout(() => setIndex(i => i + 1), speed)
     return () => clearTimeout(timer)
-  }, [index, text, speed, onComplete])
+  }, [index, text, speed])
 
   return (
     <span className={className}>

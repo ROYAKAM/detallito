@@ -6,6 +6,7 @@ import TypewriterText from '../components/TypewriterText'
 import EnvelopeReveal from '../components/EnvelopeReveal'
 import DialogueBox from '../components/DialogueBox'
 import config, { CONFETTI_COLORS } from '../data/config'
+import sfx from '../sfx'
 import { questions } from '../data/quiz'
 import { cards } from '../data/cards'
 
@@ -65,6 +66,7 @@ export default function FinalPage() {
               Tengo algo para ti...
             </h2>
             <EnvelopeReveal onOpen={() => {
+              sfx.celebration()
               setShowLetter(true)
               confetti({ particleCount: 100, spread: 100, origin: { y: 0.5 }, colors: CONFETTI_COLORS })
             }} />
@@ -72,7 +74,7 @@ export default function FinalPage() {
         ) : (
           <div className="max-w-lg w-full space-y-10">
             {/* Letter */}
-            <div className="pixel-border bg-sdvcream-100 p-6 sm:p-8 text-left" style={{ boxShadow: 'inset 0 0 20px rgba(107, 55, 16, 0.1)' }}>
+            <div className="pixel-border bg-sdvcream-100 p-6 sm:p-8 text-left max-h-[60vh] overflow-y-auto" style={{ boxShadow: 'inset 0 0 20px rgba(107, 55, 16, 0.1)' }}>
               <div className="text-farm-900/80 leading-relaxed whitespace-pre-line font-body text-xl">
                 <TypewriterText
                   text={LOVE_LETTER}
@@ -86,11 +88,11 @@ export default function FinalPage() {
               <div className="space-y-6">
                 {quizScore !== null && (
                   <div className="flex justify-center gap-6">
-                    <div className="pixel-border bg-farm-800 px-5 py-3">
+                    <div className="pixel-border bg-farm-800 px-5 py-3" style={{ animation: 'pop-in 0.4s ease-out' }}>
                       <p className="text-2xl font-bold text-sdvgold-500 font-body">{quizScore}/{questions.length}</p>
                       <p className="text-xs text-sdvcream-200/50 font-body">Quiz score</p>
                     </div>
-                    <div className="pixel-border bg-farm-800 px-5 py-3">
+                    <div className="pixel-border bg-farm-800 px-5 py-3" style={{ animation: 'pop-in 0.4s ease-out 0.2s both' }}>
                       <p className="text-2xl font-bold text-sdvgold-500 font-body">{unlockedCards.length}/{cards.length}</p>
                       <p className="text-xs text-sdvcream-200/50 font-body">Items</p>
                     </div>
@@ -107,7 +109,7 @@ export default function FinalPage() {
                 </div>
 
                 <button
-                  onClick={() => window.location.href = '/'}
+                  onClick={() => { sfx.click(); window.location.href = '/' }}
                   className="sdv-button mt-6"
                 >
                   Volver al inicio

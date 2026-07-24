@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import confetti from 'canvas-confetti'
 import { useApp } from '../context/AppContext'
 import PageTransition from '../components/PageTransition'
 import config, { CONFETTI_COLORS } from '../data/config'
+import sfx from '../sfx'
 
 export default function LoginPage() {
   const navigate = useNavigate()
@@ -15,18 +16,21 @@ export default function LoginPage() {
   const [error, setError] = useState(false)
   const cardRef = useRef(null)
 
-  if (isAuthenticated) {
-    navigate('/rewind', { replace: true })
-    return null
-  }
+  // ponytail: useEffect to avoid calling navigate during render
+  useEffect(() => {
+    if (isAuthenticated) navigate('/rewind', { replace: true })
+  }, [isAuthenticated, navigate])
+  if (isAuthenticated) return null
 
   function handleSubmit(e) {
     e.preventDefault()
     if (password.toLowerCase() === config.password.toLowerCase()) {
+      sfx.loginSuccess()
       setIsAuthenticated(true)
       confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: CONFETTI_COLORS })
       setTimeout(() => navigate('/rewind'), 600)
     } else {
+      sfx.wrong()
       setError(true)
       gsap.to(cardRef.current, { x: [-12, 12, -8, 8, 0], duration: 0.4, ease: 'power2.out' })
       setTimeout(() => setError(false), 1500)
@@ -72,7 +76,7 @@ export default function LoginPage() {
           </form>
 
           <button
-            onClick={() => setHintIdx(i => (i + 1) % config.hints.length)}
+            onClick={() => { sfx.hint(); setHintIdx(i => (i + 1) % config.hints.length) }}
             className="w-full mt-4 text-sdvcream-200/50 hover:text-sdvgold-400 font-body text-lg transition-colors"
           >
             {hintIdx >= 0 ? 'Otra pista' : 'Necesito una pista'}

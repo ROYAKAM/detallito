@@ -7,6 +7,7 @@ import PageTransition from '../components/PageTransition'
 import DialogueBox from '../components/DialogueBox'
 import { cards } from '../data/cards'
 import config, { CONFETTI_COLORS } from '../data/config'
+import sfx from '../sfx'
 
 const RARITY_BORDER = { common: 'border-sdvcream-200/40', rare: 'border-sdvpurple-400', legendary: 'border-sdvgold-500' }
 // ponytail: common maps to 'none', could skip style attr entirely but the map is 1 line
@@ -29,12 +30,18 @@ export default function CardsPage() {
   }, [dialogueDone])
 
   function handleFlip(card) {
-    if (!isUnlocked(card)) return
+    if (!isUnlocked(card)) {
+      sfx.locked()
+      const el = document.getElementById(`card-${card.id}`)
+      if (el) { el.style.animation = 'shake 0.4s'; setTimeout(() => { el.style.animation = '' }, 400) }
+      return
+    }
     setFlipped(prev => {
       const next = new Set(prev)
-      if (next.has(card.id)) next.delete(card.id)
+      if (next.has(card.id)) { next.delete(card.id); sfx.flip() }
       else {
         next.add(card.id)
+        sfx.unlock()
         confetti({ particleCount: 20, spread: 40, origin: { y: 0.7 }, colors: CONFETTI_COLORS })
       }
       return next
@@ -59,7 +66,7 @@ export default function CardsPage() {
           <p className="text-sdvcream-200/50 mt-2 font-body text-xl">{unlockedCount} de {cards.length} items encontrados</p>
           {quizScore === null && (
             <button
-              onClick={() => navigate('/quiz')}
+              onClick={() => { sfx.click(); navigate('/quiz') }}
               className="mt-3 text-lg text-sdvgold-400 hover:text-sdvgold-300 underline transition-colors font-body"
             >
               Completa el quiz para desbloquear mas
@@ -74,7 +81,7 @@ export default function CardsPage() {
             const rarityBorder = unlocked ? RARITY_BORDER[card.rarity] : 'border-farm-600'
 
             return (
-              <div key={card.id} onClick={() => handleFlip(card)} className="cursor-pointer" style={{ perspective: '800px' }}>
+              <div key={card.id} id={`card-${card.id}`} onClick={() => handleFlip(card)} className="cursor-pointer" style={{ perspective: '800px' }}>
                 <div
                   className="relative w-full aspect-square transition-transform duration-500"
                   style={{ transformStyle: 'preserve-3d', transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0)' }}
@@ -84,7 +91,7 @@ export default function CardsPage() {
                     className={`absolute inset-0 bg-[#2a3a5c] border-4 ${rarityBorder} flex flex-col items-center justify-center gap-2`}
                     style={{ backfaceVisibility: 'hidden', animation: unlocked ? RARITY_GLOW[card.rarity] : 'none' }}
                   >
-                    <span className="text-4xl">{unlocked ? card.emoji : '❓'}</span>
+                    <span className="text-4xl inline-block" style={unlocked ? { animation: `item-bob 2s ease-in-out infinite`, animationDelay: `${card.id * 0.3}s` } : {}}>{unlocked ? card.emoji : '❓'}</span>
                     <p className="text-xs font-body text-sdvcream-100/70 px-2 text-center">
                       {unlocked ? card.itemName : 'Bloqueado'}
                     </p>
@@ -106,7 +113,7 @@ export default function CardsPage() {
 
         <div className="text-center mt-10">
           <button
-            onClick={() => navigate(quizScore === null ? '/quiz' : '/final')}
+            onClick={() => { sfx.click(); navigate(quizScore === null ? '/quiz' : '/final') }}
             className="sdv-button"
           >
             {quizScore === null ? 'Ir al quiz' : 'Ver mensaje final'}

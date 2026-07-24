@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import gsap from 'gsap'
+import sfx from '../sfx'
 
 // ponytail: restyled as Stardew Valley parchment letter
 export default function EnvelopeReveal({ onOpen }) {
@@ -11,6 +12,7 @@ export default function EnvelopeReveal({ onOpen }) {
   function handleOpen() {
     if (opened) return
     setOpened(true)
+    sfx.envelopeOpen()
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -27,8 +29,8 @@ export default function EnvelopeReveal({ onOpen }) {
     <div
       ref={envelopeRef}
       onClick={handleOpen}
-      className="cursor-pointer select-none mx-auto"
-      style={{ width: 240, height: 180, perspective: 600 }}
+      className="cursor-pointer select-none mx-auto w-full max-w-[240px]"
+      style={{ height: 180, perspective: 600, pointerEvents: opened ? 'none' : 'auto' }}
     >
       <div className="relative w-full h-full">
         {/* Back */}
